@@ -1,0 +1,9 @@
+input TagInput {
+  key: String!
+  inc: Boolean!
+}
+
+type Tag {
+  key: String!
+  inc: Boolean!
+}

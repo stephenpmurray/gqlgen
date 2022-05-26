@@ -1,0 +1,8 @@
+type Settings {
+  map: MapSettings
+}
+
+type MapSettings {
+  center: LatLng
+  zoom: Int
+}

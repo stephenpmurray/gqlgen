@@ -1,0 +1,41 @@
+type ProvisionChart {
+  "Unique chart name in Helm repo. name field in Chart.yaml"
+  name: String!
+
+  "version field in Chart.yaml"
+  version: String!
+
+  baremetalValues: String
+
+  softwareValues: String
+}
+
+type ChartKey {
+  "Unique chart name in Helm repo. name field in Chart.yaml"
+  name: String!
+
+  "version field in Chart.yaml"
+  version: String!
+}
+
+input ProvisionInput {
+  "Chart name in Helm repo"
+  chartName: String!
+
+  "Chart semantic version number"
+  chartVersion: String!
+
+  "Site selector for Provisioner block deployment"
+  provisionerSite: ID!
+
+  provisionInventory: String!
+
+  "Display name of device to be shown in the UI"
+  displayName: String!
+
+  "Geographical position of device"
+  position: LatLngInput!
+
+  "Site that device belongs to"
+  site: ID!
+}

@@ -1,0 +1,182 @@
+type Site {
+  id: ID!
+  displayName: String
+  description: String
+  ancestors: [Site]
+  sites: [Site]
+  devices: DevicesResult
+}
+
+input SiteInput {
+  displayName: String
+  description: String
+
+  "Top-down ordered list of ancestor site IDs. If empty, site is created at the top level"
+  ancestors: [ID!]
+}
+
+type DevicesResult {
+  devices: [Device!]
+  hits: Int
+}
+
+type Progress {
+  step: Int!
+  goal: Int!
+}
+
+type Device {
+  id: ID!
+  tags: [String!]
+  parents: [ID!]
+  displayName: String
+  img: String
+  iconType: String
+  position: LatLng
+  specs: String
+  status: DeviceStatus
+  progress: Progress
+  mac: String
+  probeIp: String
+  nztpWorkflow: String
+  ipmiAddress: String
+  ipmiUsername: String
+  hostIp: String
+  links(tags: [TagInput!], bbox: BBox): [DeviceLink!]
+  telemetryUrl: String @deprecated(reason: "telemetryUrl duplicated in connections")
+  connections(kindCatPairs: [KindCatPair!]): [Connection]
+  site: String
+}
+
+type DeviceLink {
+  id: ID!
+  device: Device
+  status: String
+  metrics(dimensions: [String!]): [Metric]
+}
+
+type Metric {
+  dimension: String!
+  value: Float
+  timestamp: Time
+}
+
+type LatLng {
+  lat: Float!
+  lng: Float!
+}
+
+enum DeviceStatus {
+  UNKNOWN
+  READY
+  DEPLOYING
+}
+
+"""
+Properties of a new device to be registered
+"""
+input DeviceInput {
+  "List of connections (e.g. video streams, APIs) available on the device"
+  connections: [ConnectionInput!]
+
+  "List of tags that describe the device"
+  tags: [String!]
+
+  "List of IDs of parent devices"
+  parents: [ID!]
+
+  "Display name of device to be shown in the UI"
+  displayName: String
+
+  "Path to device image (currently unused)"
+  img: String @deprecated
+
+  "Map icon of device (currently unused)"
+  iconType: String @deprecated
+
+  "Configuration file used to connect to Kubenetes Control Plane of a Cloudlet"
+  kubeconfig: String
+
+  "Geographical position of device"
+  position: LatLngInput
+
+  "MAC address of device"
+  mac: String
+
+  "IP the probes should use to collect network metrics from the device"
+  probeIp: String
+
+  "Near Zero-Touch Provisioning server address"
+  nztpServer: String
+
+  "Near Zero-Touch Provisioning workflow"
+  nztpWorkflow: String
+
+  "Address of the IPMI management interface of the device"
+  ipmiAddress: String
+
+  "Username used to authenticate when issuing IPMI commands"
+  ipmiUsername: String
+
+  "Password used to authenticate when issuing IPMI commands"
+  ipmiPassword: String
+
+  "Site that device belongs to"
+  site: String!
+}
+
+input EditDeviceInput {
+  "Display name of device to be shown in the UI"
+  displayName: String
+
+  "List of tags that describe the device"
+  tags: [String!]
+
+  "Geographical position of device"
+  position: LatLngInput
+
+  "Near Zero-Touch Provisioning workflow"
+  nztpWorkflow: String
+
+  "Near Zero-Touch Provisioning flag to provision on next boot"
+  nztpProvision: Boolean
+
+  "Address of the IPMI management interface of the device"
+  ipmiAddress: String
+
+  "Username used to authenticate when issuing IPMI commands"
+  ipmiUsername: String
+
+  "Password used to authenticate when issuing IPMI commands"
+  ipmiPassword: String
+
+  connections: [EditConnectionInput!]
+
+  deletedConnections: [ID!]
+
+  "Site that device belongs to"
+  site: String
+}
+
+input LatLngInput {
+  "Degrees latitude"
+  lat: Float!
+
+  "Degrees longitude"
+  lng: Float!
+}
+
+input BBox {
+  "Northwesternmost point of a bounding box"
+  nw: LatLngInput!
+
+  "Southeasternmost point of a bounding box"
+  se: LatLngInput!
+}
+
+enum IpmiCommand {
+  RESTART
+  RESET
+  POWER_ON
+  POWER_OFF
+}

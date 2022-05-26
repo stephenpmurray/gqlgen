@@ -1,0 +1,164 @@
+type Block {
+  id: ID!
+  displayName: String
+  values: String
+  selectedVersion: String
+  chart: BlockChart
+  status: Status
+  connections: [Connection]
+  resources: [OktoResource]
+}
+
+type OktoResource {
+  id: ID!
+  name: String
+  kind: String
+  status: Status
+  namespace: String
+  manifest: String
+}
+
+type BlockChart {
+  "Chart digest, used for client caching. Cannot fetch by ID!"
+  id: ID!
+
+  "Unique chart name in Helm repo. name field in Chart.yaml"
+  name: String!
+
+  "version field in Chart.yaml"
+  version: String!
+
+  # available versions of the block. e.g: ["0.0.2", "0.0.1"]
+  availableVersions: [String!]
+
+  "keywords field in Chart.yaml"
+  categories: [String!]
+
+  "description field in Chart.yaml"
+  description: String
+
+  "full contents of Chart.yaml"
+  chartYaml: String
+
+  "annotations.displayName in Chart.yaml"
+  displayName: String
+
+  "values.yaml"
+  valuesYaml: String
+
+  "annotations.vendor field in Chart.yaml"
+  vendor: String
+
+  "icon field in Chart.yaml"
+  logoUrl: String
+}
+
+type Service {
+  id: ID!
+  diagramNode: ID
+  # human-readable instance name, assigned at deploy time
+  name: String!
+  using: Dependencies
+  connections: [Connection]
+  platformKPIs: [KPI]
+  kpis: [KPI]
+  status: Status
+  fields: [FieldParam!]
+  tenant: String
+  owner: String
+  createdAt: Time
+}
+
+type ServiceParam {
+  name: String!
+  type: String!
+}
+
+enum Status {
+  READY
+  DEPLOYING
+  UNDEPLOYING
+  FAILURE
+  UNKNOWN
+  PENDING
+}
+
+type Dependencies {
+  services: [Service]
+}
+
+type KPI {
+  name: String
+  type: String
+  value: String
+}
+
+type FieldParam {
+  name: String!
+  value: String!
+}
+
+input BlockConnectionInput {
+  "Field name"
+  name: String!
+
+  "Connection ID"
+  connId: ID!
+}
+
+type Server {
+  diagramNode: ID!
+  device: Device
+  pinned: Boolean!
+}
+
+type ServiceChain {
+  id: ID!
+  name: String!
+  blocks: [Block]
+  using: Dependencies
+  connections: [Connection]
+  platformKPIs: [KPI]
+  kpis: [KPI]
+  servers: [Server]
+  status: Status
+  tenant: String
+  owner: String
+  createdAt: Time
+}
+
+input ServerInput {
+  diagramNode: ID!
+  device: ID!
+  pinned: Boolean
+}
+
+input DeployTargetInput {
+  master: ID!
+  host: ID!
+}
+
+input BlockInput {
+  """
+  ID of a previously-deployed block to update.
+  Providing this parameter implies an update to an existing block,
+  whereas inputs with no ID will be treated as new blocks.
+  """
+  id: ID
+
+  "Display name of the block"
+  displayName: String!
+
+  # blockChartRepoUrl: String! currently assuming fixed URL in Service Manager
+
+  "Chart name in Helm repo"
+  blockChartName: String!
+
+  "Chart semantic version number"
+  blockChartVersion: String!
+
+  # blockChartDigest: String "Unique ID digest from the block chart" (shouldn't be necessary if we never overwrite Chart versions)
+
+  "Override values in YAML format"
+  values: String!
+}

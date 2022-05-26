@@ -1,0 +1,44 @@
+type Connection {
+  id: ID!
+  category: String!
+  description: String
+
+  "Parent entity providing the connection"
+  entity: ConnectionEntity
+
+  kind: String!
+  name: String!
+  source: String!
+}
+
+type ConnectionEntity {
+  id: ID!
+  type: EntityType
+}
+
+enum EntityType {
+  UNKNOWN
+  BLOCK
+  DEVICE
+}
+
+input ConnectionInput {
+  category: String!
+  kind: String!
+  name: String!
+  source: String!
+}
+
+input EditConnectionInput {
+  id: ID!
+  category: String!
+  kind: String!
+  name: String!
+  source: String!
+}
+
+"pair of kind / category for search parameters"
+input KindCatPair {
+  category: String!
+  kind: String!
+}

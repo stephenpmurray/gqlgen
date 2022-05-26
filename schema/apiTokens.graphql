@@ -1,0 +1,5 @@
+type ApiTokens {
+  id: ID!
+  googleMaps: String
+  mapbox: String
+}

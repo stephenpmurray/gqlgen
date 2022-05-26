@@ -1,0 +1,151 @@
+"An ISO 8601 formatted Date and Time"
+scalar Time
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  apiTokens: ApiTokens
+
+  connections(
+    "List of parent entity (service or device) to filter by"
+    entities: [ID!]
+
+    "List of connection kinds and categorys to filter by"
+    kindCatPairs: [KindCatPair!]
+  ): [Connection]
+
+  devices(
+    "Device ID (overrides other parameters)"
+    id: ID
+
+    "List of tag filters"
+    tags: [TagInput!]
+
+    "List of IDs of parent devices that matching devices must have"
+    parents: [ID!]
+
+    "Geographic bounding box. Results outside this box will not be returned"
+    bbox: BBox
+
+    "Free text search field to filter by device display name, IP address and/or MAC address"
+    searchTerm: String
+  ): DevicesResult
+
+  nearbyDevices(
+    "ID of the reference device"
+    device: ID!
+
+    "List of tag filters"
+    tags: [TagInput!]
+
+    """
+    Radius in metres of a circular cap on the Earth's surface,
+    centered on the position of the reference device.
+    Results outside this cap will not be returned.
+    """
+    radius: Float
+
+    "Maximum network latency with the reference device, in milliseconds"
+    latency: Float
+  ): DevicesResult
+
+  serviceChain("Service chain ID" id: ID!): ServiceChain
+
+  serviceChains: [ServiceChain]
+
+  blockChart(
+    "Block Chart name"
+    name: String!
+
+    "Block Chart version. If unspecified, then the latest version is returned"
+    version: String
+  ): BlockChart
+
+  "Return the latest version of all Block Charts in the registry"
+  blockCharts(category: String, vendors: [ID!]): [BlockChart]
+
+  "Return the baremetal / software values of a provision chart"
+  provisionChart(name: String!, version: String!): ProvisionChart
+
+  "Return a list of all versions of all provision Charts in the registry"
+  provisionCharts: [ChartKey]
+
+  settings: Settings
+
+  "Return the Site with the given ID, or if the ID is null, the top level Site"
+  site(id: ID): Site
+
+  loggedInUser: User
+
+  users(org: ID): [User]
+
+  version: String!
+
+  oktoResource(name: String!, kind: String!, namespace: String!): OktoResource
+}
+
+type Mutation {
+  device("Properties of the new device to be registered" dev: DeviceInput!): Device
+
+  editDevice(
+    "ID of device to modify"
+    id: ID!
+
+    "Replacement properties of the existing device"
+    device: EditDeviceInput!
+  ): Device
+
+  removeDevice("ID of device to remove" id: ID!): ID
+
+  ipmiCommand(
+    "ID of device to execute command on"
+    id: ID!
+
+    "IPMI command to be executed"
+    cmd: IpmiCommand!
+  ): Boolean
+
+  deployServiceChain(
+    "Display name of the service chain"
+    name: String!
+
+    "List of blocks in the service chain"
+    blocks: [BlockInput!]
+  ): ServiceChain
+
+  updateServiceChain(
+    "ID of service chain ID to update"
+    id: ID!
+
+    "New name for the service chain"
+    name: String!
+
+    "New list of blocks in the service chain"
+    blocks: [BlockInput!]
+  ): ServiceChain
+
+  removeServiceChain("ID of the service chain to remove" id: ID!): ID
+
+  provision(input: ProvisionInput!): Device
+
+  setDefaultMapPosition(
+    "Default (Lat, Lng) to initially center the map at"
+    center: LatLngInput!
+
+    "Default initial zoom level"
+    zoom: Int!
+  ): MapSettings
+
+  createSite(site: SiteInput!): Site
+
+  editSite(id: ID!, site: SiteInput!): Site
+
+  removeSite(id: ID!): ID
+
+  createUser(user: CreateUserInput!): User
+
+  removeUser(id: ID!): User
+}
