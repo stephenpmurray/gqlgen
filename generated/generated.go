@@ -14,7 +14,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
-	"github.com/stephenpmurray/gqlgen/graph/model"
+	"github.com/stephenpmurray/gqlgen/model"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
 )
@@ -1654,13 +1654,13 @@ func (ec *executionContext) introspectType(name string) (*introspection.Type, er
 }
 
 var sources = []*ast.Source{
-	{Name: "../../schema/apiTokens.graphql", Input: `type ApiTokens {
+	{Name: "../schema/apiTokens.graphql", Input: `type ApiTokens {
   id: ID!
   googleMaps: String
   mapbox: String
 }
 `, BuiltIn: false},
-	{Name: "../../schema/connection.graphql", Input: `type Connection {
+	{Name: "../schema/connection.graphql", Input: `type Connection {
   id: ID!
   category: String!
   description: String
@@ -1705,7 +1705,7 @@ input KindCatPair {
   kind: String!
 }
 `, BuiltIn: false},
-	{Name: "../../schema/device.graphql", Input: `type Site {
+	{Name: "../schema/device.graphql", Input: `type Site {
   id: ID!
   displayName: String
   description: String
@@ -1888,7 +1888,7 @@ enum IpmiCommand {
   POWER_OFF
 }
 `, BuiltIn: false},
-	{Name: "../../schema/provision.graphql", Input: `type ProvisionChart {
+	{Name: "../schema/provision.graphql", Input: `type ProvisionChart {
   "Unique chart name in Helm repo. name field in Chart.yaml"
   name: String!
 
@@ -1930,7 +1930,7 @@ input ProvisionInput {
   site: ID!
 }
 `, BuiltIn: false},
-	{Name: "../../schema/schema.graphql", Input: `"An ISO 8601 formatted Date and Time"
+	{Name: "../schema/schema.graphql", Input: `"An ISO 8601 formatted Date and Time"
 scalar Time
 
 schema {
@@ -2082,7 +2082,7 @@ type Mutation {
   removeUser(id: ID!): User
 }
 `, BuiltIn: false},
-	{Name: "../../schema/service.graphql", Input: `type Block {
+	{Name: "../schema/service.graphql", Input: `type Block {
   id: ID!
   displayName: String
   values: String
@@ -2247,7 +2247,7 @@ input BlockInput {
   values: String!
 }
 `, BuiltIn: false},
-	{Name: "../../schema/settings.graphql", Input: `type Settings {
+	{Name: "../schema/settings.graphql", Input: `type Settings {
   map: MapSettings
 }
 
@@ -2256,7 +2256,7 @@ type MapSettings {
   zoom: Int
 }
 `, BuiltIn: false},
-	{Name: "../../schema/tag.graphql", Input: `input TagInput {
+	{Name: "../schema/tag.graphql", Input: `input TagInput {
   key: String!
   inc: Boolean!
 }
@@ -2266,7 +2266,7 @@ type Tag {
   inc: Boolean!
 }
 `, BuiltIn: false},
-	{Name: "../../schema/user.graphql", Input: `enum Role {
+	{Name: "../schema/user.graphql", Input: `enum Role {
   ADMIN
   OPERATOR
   VIEWER
@@ -2315,7 +2315,7 @@ func (ec *executionContext) field_Device_connections_args(ctx context.Context, r
 	var arg0 []*model.KindCatPair
 	if tmp, ok := rawArgs["kindCatPairs"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("kindCatPairs"))
-		arg0, err = ec.unmarshalOKindCatPair2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐKindCatPairᚄ(ctx, tmp)
+		arg0, err = ec.unmarshalOKindCatPair2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐKindCatPairᚄ(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2330,7 +2330,7 @@ func (ec *executionContext) field_Device_links_args(ctx context.Context, rawArgs
 	var arg0 []*model.TagInput
 	if tmp, ok := rawArgs["tags"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("tags"))
-		arg0, err = ec.unmarshalOTagInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐTagInputᚄ(ctx, tmp)
+		arg0, err = ec.unmarshalOTagInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐTagInputᚄ(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2339,7 +2339,7 @@ func (ec *executionContext) field_Device_links_args(ctx context.Context, rawArgs
 	var arg1 *model.BBox
 	if tmp, ok := rawArgs["bbox"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("bbox"))
-		arg1, err = ec.unmarshalOBBox2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBBox(ctx, tmp)
+		arg1, err = ec.unmarshalOBBox2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBBox(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2354,7 +2354,7 @@ func (ec *executionContext) field_Mutation_createSite_args(ctx context.Context, 
 	var arg0 model.SiteInput
 	if tmp, ok := rawArgs["site"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("site"))
-		arg0, err = ec.unmarshalNSiteInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSiteInput(ctx, tmp)
+		arg0, err = ec.unmarshalNSiteInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSiteInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2369,7 +2369,7 @@ func (ec *executionContext) field_Mutation_createUser_args(ctx context.Context, 
 	var arg0 model.CreateUserInput
 	if tmp, ok := rawArgs["user"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("user"))
-		arg0, err = ec.unmarshalNCreateUserInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐCreateUserInput(ctx, tmp)
+		arg0, err = ec.unmarshalNCreateUserInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐCreateUserInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2393,7 +2393,7 @@ func (ec *executionContext) field_Mutation_deployServiceChain_args(ctx context.C
 	var arg1 []*model.BlockInput
 	if tmp, ok := rawArgs["blocks"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("blocks"))
-		arg1, err = ec.unmarshalOBlockInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlockInputᚄ(ctx, tmp)
+		arg1, err = ec.unmarshalOBlockInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlockInputᚄ(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2408,7 +2408,7 @@ func (ec *executionContext) field_Mutation_device_args(ctx context.Context, rawA
 	var arg0 model.DeviceInput
 	if tmp, ok := rawArgs["dev"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("dev"))
-		arg0, err = ec.unmarshalNDeviceInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDeviceInput(ctx, tmp)
+		arg0, err = ec.unmarshalNDeviceInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDeviceInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2432,7 +2432,7 @@ func (ec *executionContext) field_Mutation_editDevice_args(ctx context.Context, 
 	var arg1 model.EditDeviceInput
 	if tmp, ok := rawArgs["device"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("device"))
-		arg1, err = ec.unmarshalNEditDeviceInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐEditDeviceInput(ctx, tmp)
+		arg1, err = ec.unmarshalNEditDeviceInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐEditDeviceInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2456,7 +2456,7 @@ func (ec *executionContext) field_Mutation_editSite_args(ctx context.Context, ra
 	var arg1 model.SiteInput
 	if tmp, ok := rawArgs["site"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("site"))
-		arg1, err = ec.unmarshalNSiteInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSiteInput(ctx, tmp)
+		arg1, err = ec.unmarshalNSiteInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSiteInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2480,7 +2480,7 @@ func (ec *executionContext) field_Mutation_ipmiCommand_args(ctx context.Context,
 	var arg1 model.IpmiCommand
 	if tmp, ok := rawArgs["cmd"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("cmd"))
-		arg1, err = ec.unmarshalNIpmiCommand2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐIpmiCommand(ctx, tmp)
+		arg1, err = ec.unmarshalNIpmiCommand2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐIpmiCommand(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2495,7 +2495,7 @@ func (ec *executionContext) field_Mutation_provision_args(ctx context.Context, r
 	var arg0 model.ProvisionInput
 	if tmp, ok := rawArgs["input"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg0, err = ec.unmarshalNProvisionInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐProvisionInput(ctx, tmp)
+		arg0, err = ec.unmarshalNProvisionInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐProvisionInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2570,7 +2570,7 @@ func (ec *executionContext) field_Mutation_setDefaultMapPosition_args(ctx contex
 	var arg0 model.LatLngInput
 	if tmp, ok := rawArgs["center"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("center"))
-		arg0, err = ec.unmarshalNLatLngInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐLatLngInput(ctx, tmp)
+		arg0, err = ec.unmarshalNLatLngInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐLatLngInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2612,7 +2612,7 @@ func (ec *executionContext) field_Mutation_updateServiceChain_args(ctx context.C
 	var arg2 []*model.BlockInput
 	if tmp, ok := rawArgs["blocks"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("blocks"))
-		arg2, err = ec.unmarshalOBlockInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlockInputᚄ(ctx, tmp)
+		arg2, err = ec.unmarshalOBlockInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlockInputᚄ(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2699,7 +2699,7 @@ func (ec *executionContext) field_Query_connections_args(ctx context.Context, ra
 	var arg1 []*model.KindCatPair
 	if tmp, ok := rawArgs["kindCatPairs"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("kindCatPairs"))
-		arg1, err = ec.unmarshalOKindCatPair2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐKindCatPairᚄ(ctx, tmp)
+		arg1, err = ec.unmarshalOKindCatPair2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐKindCatPairᚄ(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2723,7 +2723,7 @@ func (ec *executionContext) field_Query_devices_args(ctx context.Context, rawArg
 	var arg1 []*model.TagInput
 	if tmp, ok := rawArgs["tags"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("tags"))
-		arg1, err = ec.unmarshalOTagInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐTagInputᚄ(ctx, tmp)
+		arg1, err = ec.unmarshalOTagInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐTagInputᚄ(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2741,7 +2741,7 @@ func (ec *executionContext) field_Query_devices_args(ctx context.Context, rawArg
 	var arg3 *model.BBox
 	if tmp, ok := rawArgs["bbox"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("bbox"))
-		arg3, err = ec.unmarshalOBBox2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBBox(ctx, tmp)
+		arg3, err = ec.unmarshalOBBox2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBBox(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2774,7 +2774,7 @@ func (ec *executionContext) field_Query_nearbyDevices_args(ctx context.Context, 
 	var arg1 []*model.TagInput
 	if tmp, ok := rawArgs["tags"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("tags"))
-		arg1, err = ec.unmarshalOTagInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐTagInputᚄ(ctx, tmp)
+		arg1, err = ec.unmarshalOTagInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐTagInputᚄ(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -3259,7 +3259,7 @@ func (ec *executionContext) _Block_chart(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.(*model.BlockChart)
 	fc.Result = res
-	return ec.marshalOBlockChart2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlockChart(ctx, field.Selections, res)
+	return ec.marshalOBlockChart2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlockChart(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Block_chart(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3324,7 +3324,7 @@ func (ec *executionContext) _Block_status(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.(*model.Status)
 	fc.Result = res
-	return ec.marshalOStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐStatus(ctx, field.Selections, res)
+	return ec.marshalOStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐStatus(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Block_status(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3365,7 +3365,7 @@ func (ec *executionContext) _Block_connections(ctx context.Context, field graphq
 	}
 	res := resTmp.([]*model.Connection)
 	fc.Result = res
-	return ec.marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnection(ctx, field.Selections, res)
+	return ec.marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Block_connections(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3422,7 +3422,7 @@ func (ec *executionContext) _Block_resources(ctx context.Context, field graphql.
 	}
 	res := resTmp.([]*model.OktoResource)
 	fc.Result = res
-	return ec.marshalOOktoResource2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐOktoResource(ctx, field.Selections, res)
+	return ec.marshalOOktoResource2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐOktoResource(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Block_resources(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4154,7 +4154,7 @@ func (ec *executionContext) _Connection_entity(ctx context.Context, field graphq
 	}
 	res := resTmp.(*model.ConnectionEntity)
 	fc.Result = res
-	return ec.marshalOConnectionEntity2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnectionEntity(ctx, field.Selections, res)
+	return ec.marshalOConnectionEntity2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnectionEntity(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Connection_entity(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4377,7 +4377,7 @@ func (ec *executionContext) _ConnectionEntity_type(ctx context.Context, field gr
 	}
 	res := resTmp.(*model.EntityType)
 	fc.Result = res
-	return ec.marshalOEntityType2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐEntityType(ctx, field.Selections, res)
+	return ec.marshalOEntityType2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐEntityType(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_ConnectionEntity_type(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4418,7 +4418,7 @@ func (ec *executionContext) _Dependencies_services(ctx context.Context, field gr
 	}
 	res := resTmp.([]*model.Service)
 	fc.Result = res
-	return ec.marshalOService2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐService(ctx, field.Selections, res)
+	return ec.marshalOService2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐService(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Dependencies_services(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4734,7 +4734,7 @@ func (ec *executionContext) _Device_position(ctx context.Context, field graphql.
 	}
 	res := resTmp.(*model.LatLng)
 	fc.Result = res
-	return ec.marshalOLatLng2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐLatLng(ctx, field.Selections, res)
+	return ec.marshalOLatLng2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐLatLng(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Device_position(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4822,7 +4822,7 @@ func (ec *executionContext) _Device_status(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.(*model.DeviceStatus)
 	fc.Result = res
-	return ec.marshalODeviceStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDeviceStatus(ctx, field.Selections, res)
+	return ec.marshalODeviceStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDeviceStatus(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Device_status(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4863,7 +4863,7 @@ func (ec *executionContext) _Device_progress(ctx context.Context, field graphql.
 	}
 	res := resTmp.(*model.Progress)
 	fc.Result = res
-	return ec.marshalOProgress2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐProgress(ctx, field.Selections, res)
+	return ec.marshalOProgress2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐProgress(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Device_progress(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5156,7 +5156,7 @@ func (ec *executionContext) _Device_links(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.([]*model.DeviceLink)
 	fc.Result = res
-	return ec.marshalODeviceLink2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDeviceLinkᚄ(ctx, field.Selections, res)
+	return ec.marshalODeviceLink2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDeviceLinkᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Device_links(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5259,7 +5259,7 @@ func (ec *executionContext) _Device_connections(ctx context.Context, field graph
 	}
 	res := resTmp.([]*model.Connection)
 	fc.Result = res
-	return ec.marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnection(ctx, field.Selections, res)
+	return ec.marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Device_connections(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5412,7 +5412,7 @@ func (ec *executionContext) _DeviceLink_device(ctx context.Context, field graphq
 	}
 	res := resTmp.(*model.Device)
 	fc.Result = res
-	return ec.marshalODevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDevice(ctx, field.Selections, res)
+	return ec.marshalODevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDevice(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_DeviceLink_device(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5536,7 +5536,7 @@ func (ec *executionContext) _DeviceLink_metrics(ctx context.Context, field graph
 	}
 	res := resTmp.([]*model.Metric)
 	fc.Result = res
-	return ec.marshalOMetric2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐMetric(ctx, field.Selections, res)
+	return ec.marshalOMetric2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐMetric(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_DeviceLink_metrics(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5596,7 +5596,7 @@ func (ec *executionContext) _DevicesResult_devices(ctx context.Context, field gr
 	}
 	res := resTmp.([]*model.Device)
 	fc.Result = res
-	return ec.marshalODevice2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDeviceᚄ(ctx, field.Selections, res)
+	return ec.marshalODevice2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDeviceᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_DevicesResult_devices(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6019,7 +6019,7 @@ func (ec *executionContext) _MapSettings_center(ctx context.Context, field graph
 	}
 	res := resTmp.(*model.LatLng)
 	fc.Result = res
-	return ec.marshalOLatLng2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐLatLng(ctx, field.Selections, res)
+	return ec.marshalOLatLng2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐLatLng(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_MapSettings_center(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6233,7 +6233,7 @@ func (ec *executionContext) _Mutation_device(ctx context.Context, field graphql.
 	}
 	res := resTmp.(*model.Device)
 	fc.Result = res
-	return ec.marshalODevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDevice(ctx, field.Selections, res)
+	return ec.marshalODevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDevice(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_device(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6327,7 +6327,7 @@ func (ec *executionContext) _Mutation_editDevice(ctx context.Context, field grap
 	}
 	res := resTmp.(*model.Device)
 	fc.Result = res
-	return ec.marshalODevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDevice(ctx, field.Selections, res)
+	return ec.marshalODevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDevice(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_editDevice(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6525,7 +6525,7 @@ func (ec *executionContext) _Mutation_deployServiceChain(ctx context.Context, fi
 	}
 	res := resTmp.(*model.ServiceChain)
 	fc.Result = res
-	return ec.marshalOServiceChain2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐServiceChain(ctx, field.Selections, res)
+	return ec.marshalOServiceChain2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐServiceChain(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_deployServiceChain(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6603,7 +6603,7 @@ func (ec *executionContext) _Mutation_updateServiceChain(ctx context.Context, fi
 	}
 	res := resTmp.(*model.ServiceChain)
 	fc.Result = res
-	return ec.marshalOServiceChain2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐServiceChain(ctx, field.Selections, res)
+	return ec.marshalOServiceChain2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐServiceChain(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_updateServiceChain(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6733,7 +6733,7 @@ func (ec *executionContext) _Mutation_provision(ctx context.Context, field graph
 	}
 	res := resTmp.(*model.Device)
 	fc.Result = res
-	return ec.marshalODevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDevice(ctx, field.Selections, res)
+	return ec.marshalODevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDevice(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_provision(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6827,7 +6827,7 @@ func (ec *executionContext) _Mutation_setDefaultMapPosition(ctx context.Context,
 	}
 	res := resTmp.(*model.MapSettings)
 	fc.Result = res
-	return ec.marshalOMapSettings2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐMapSettings(ctx, field.Selections, res)
+	return ec.marshalOMapSettings2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐMapSettings(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_setDefaultMapPosition(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6885,7 +6885,7 @@ func (ec *executionContext) _Mutation_createSite(ctx context.Context, field grap
 	}
 	res := resTmp.(*model.Site)
 	fc.Result = res
-	return ec.marshalOSite2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSite(ctx, field.Selections, res)
+	return ec.marshalOSite2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSite(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createSite(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6951,7 +6951,7 @@ func (ec *executionContext) _Mutation_editSite(ctx context.Context, field graphq
 	}
 	res := resTmp.(*model.Site)
 	fc.Result = res
-	return ec.marshalOSite2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSite(ctx, field.Selections, res)
+	return ec.marshalOSite2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSite(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_editSite(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7069,7 +7069,7 @@ func (ec *executionContext) _Mutation_createUser(ctx context.Context, field grap
 	}
 	res := resTmp.(*model.User)
 	fc.Result = res
-	return ec.marshalOUser2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalOUser2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createUser(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7133,7 +7133,7 @@ func (ec *executionContext) _Mutation_removeUser(ctx context.Context, field grap
 	}
 	res := resTmp.(*model.User)
 	fc.Result = res
-	return ec.marshalOUser2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalOUser2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_removeUser(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7323,7 +7323,7 @@ func (ec *executionContext) _OktoResource_status(ctx context.Context, field grap
 	}
 	res := resTmp.(*model.Status)
 	fc.Result = res
-	return ec.marshalOStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐStatus(ctx, field.Selections, res)
+	return ec.marshalOStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐStatus(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_OktoResource_status(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7704,7 +7704,7 @@ func (ec *executionContext) _Query_apiTokens(ctx context.Context, field graphql.
 	}
 	res := resTmp.(*model.APITokens)
 	fc.Result = res
-	return ec.marshalOApiTokens2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐAPITokens(ctx, field.Selections, res)
+	return ec.marshalOApiTokens2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐAPITokens(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_apiTokens(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7753,7 +7753,7 @@ func (ec *executionContext) _Query_connections(ctx context.Context, field graphq
 	}
 	res := resTmp.([]*model.Connection)
 	fc.Result = res
-	return ec.marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnection(ctx, field.Selections, res)
+	return ec.marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_connections(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7821,7 +7821,7 @@ func (ec *executionContext) _Query_devices(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.(*model.DevicesResult)
 	fc.Result = res
-	return ec.marshalODevicesResult2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDevicesResult(ctx, field.Selections, res)
+	return ec.marshalODevicesResult2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDevicesResult(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_devices(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7879,7 +7879,7 @@ func (ec *executionContext) _Query_nearbyDevices(ctx context.Context, field grap
 	}
 	res := resTmp.(*model.DevicesResult)
 	fc.Result = res
-	return ec.marshalODevicesResult2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDevicesResult(ctx, field.Selections, res)
+	return ec.marshalODevicesResult2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDevicesResult(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_nearbyDevices(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7937,7 +7937,7 @@ func (ec *executionContext) _Query_serviceChain(ctx context.Context, field graph
 	}
 	res := resTmp.(*model.ServiceChain)
 	fc.Result = res
-	return ec.marshalOServiceChain2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐServiceChain(ctx, field.Selections, res)
+	return ec.marshalOServiceChain2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐServiceChain(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_serviceChain(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8015,7 +8015,7 @@ func (ec *executionContext) _Query_serviceChains(ctx context.Context, field grap
 	}
 	res := resTmp.([]*model.ServiceChain)
 	fc.Result = res
-	return ec.marshalOServiceChain2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐServiceChain(ctx, field.Selections, res)
+	return ec.marshalOServiceChain2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐServiceChain(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_serviceChains(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8082,7 +8082,7 @@ func (ec *executionContext) _Query_blockChart(ctx context.Context, field graphql
 	}
 	res := resTmp.(*model.BlockChart)
 	fc.Result = res
-	return ec.marshalOBlockChart2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlockChart(ctx, field.Selections, res)
+	return ec.marshalOBlockChart2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlockChart(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_blockChart(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8158,7 +8158,7 @@ func (ec *executionContext) _Query_blockCharts(ctx context.Context, field graphq
 	}
 	res := resTmp.([]*model.BlockChart)
 	fc.Result = res
-	return ec.marshalOBlockChart2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlockChart(ctx, field.Selections, res)
+	return ec.marshalOBlockChart2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlockChart(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_blockCharts(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8234,7 +8234,7 @@ func (ec *executionContext) _Query_provisionChart(ctx context.Context, field gra
 	}
 	res := resTmp.(*model.ProvisionChart)
 	fc.Result = res
-	return ec.marshalOProvisionChart2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐProvisionChart(ctx, field.Selections, res)
+	return ec.marshalOProvisionChart2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐProvisionChart(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_provisionChart(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8296,7 +8296,7 @@ func (ec *executionContext) _Query_provisionCharts(ctx context.Context, field gr
 	}
 	res := resTmp.([]*model.ChartKey)
 	fc.Result = res
-	return ec.marshalOChartKey2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐChartKey(ctx, field.Selections, res)
+	return ec.marshalOChartKey2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐChartKey(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_provisionCharts(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8343,7 +8343,7 @@ func (ec *executionContext) _Query_settings(ctx context.Context, field graphql.C
 	}
 	res := resTmp.(*model.Settings)
 	fc.Result = res
-	return ec.marshalOSettings2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSettings(ctx, field.Selections, res)
+	return ec.marshalOSettings2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSettings(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_settings(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8388,7 +8388,7 @@ func (ec *executionContext) _Query_site(ctx context.Context, field graphql.Colle
 	}
 	res := resTmp.(*model.Site)
 	fc.Result = res
-	return ec.marshalOSite2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSite(ctx, field.Selections, res)
+	return ec.marshalOSite2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSite(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_site(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8454,7 +8454,7 @@ func (ec *executionContext) _Query_loggedInUser(ctx context.Context, field graph
 	}
 	res := resTmp.(*model.User)
 	fc.Result = res
-	return ec.marshalOUser2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalOUser2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_loggedInUser(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8507,7 +8507,7 @@ func (ec *executionContext) _Query_users(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.([]*model.User)
 	fc.Result = res
-	return ec.marshalOUser2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalOUser2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_users(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8615,7 +8615,7 @@ func (ec *executionContext) _Query_oktoResource(ctx context.Context, field graph
 	}
 	res := resTmp.(*model.OktoResource)
 	fc.Result = res
-	return ec.marshalOOktoResource2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐOktoResource(ctx, field.Selections, res)
+	return ec.marshalOOktoResource2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐOktoResource(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_oktoResource(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8854,7 +8854,7 @@ func (ec *executionContext) _Server_device(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.(*model.Device)
 	fc.Result = res
-	return ec.marshalODevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDevice(ctx, field.Selections, res)
+	return ec.marshalODevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDevice(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Server_device(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9110,7 +9110,7 @@ func (ec *executionContext) _Service_using(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.(*model.Dependencies)
 	fc.Result = res
-	return ec.marshalODependencies2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDependencies(ctx, field.Selections, res)
+	return ec.marshalODependencies2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDependencies(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Service_using(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9155,7 +9155,7 @@ func (ec *executionContext) _Service_connections(ctx context.Context, field grap
 	}
 	res := resTmp.([]*model.Connection)
 	fc.Result = res
-	return ec.marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnection(ctx, field.Selections, res)
+	return ec.marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Service_connections(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9212,7 +9212,7 @@ func (ec *executionContext) _Service_platformKPIs(ctx context.Context, field gra
 	}
 	res := resTmp.([]*model.Kpi)
 	fc.Result = res
-	return ec.marshalOKPI2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐKpi(ctx, field.Selections, res)
+	return ec.marshalOKPI2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐKpi(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Service_platformKPIs(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9261,7 +9261,7 @@ func (ec *executionContext) _Service_kpis(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.([]*model.Kpi)
 	fc.Result = res
-	return ec.marshalOKPI2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐKpi(ctx, field.Selections, res)
+	return ec.marshalOKPI2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐKpi(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Service_kpis(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9310,7 +9310,7 @@ func (ec *executionContext) _Service_status(ctx context.Context, field graphql.C
 	}
 	res := resTmp.(*model.Status)
 	fc.Result = res
-	return ec.marshalOStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐStatus(ctx, field.Selections, res)
+	return ec.marshalOStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐStatus(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Service_status(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9351,7 +9351,7 @@ func (ec *executionContext) _Service_fields(ctx context.Context, field graphql.C
 	}
 	res := resTmp.([]*model.FieldParam)
 	fc.Result = res
-	return ec.marshalOFieldParam2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐFieldParamᚄ(ctx, field.Selections, res)
+	return ec.marshalOFieldParam2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐFieldParamᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Service_fields(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9609,7 +9609,7 @@ func (ec *executionContext) _ServiceChain_blocks(ctx context.Context, field grap
 	}
 	res := resTmp.([]*model.Block)
 	fc.Result = res
-	return ec.marshalOBlock2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlock(ctx, field.Selections, res)
+	return ec.marshalOBlock2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlock(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_ServiceChain_blocks(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9668,7 +9668,7 @@ func (ec *executionContext) _ServiceChain_using(ctx context.Context, field graph
 	}
 	res := resTmp.(*model.Dependencies)
 	fc.Result = res
-	return ec.marshalODependencies2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDependencies(ctx, field.Selections, res)
+	return ec.marshalODependencies2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDependencies(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_ServiceChain_using(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9713,7 +9713,7 @@ func (ec *executionContext) _ServiceChain_connections(ctx context.Context, field
 	}
 	res := resTmp.([]*model.Connection)
 	fc.Result = res
-	return ec.marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnection(ctx, field.Selections, res)
+	return ec.marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_ServiceChain_connections(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9770,7 +9770,7 @@ func (ec *executionContext) _ServiceChain_platformKPIs(ctx context.Context, fiel
 	}
 	res := resTmp.([]*model.Kpi)
 	fc.Result = res
-	return ec.marshalOKPI2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐKpi(ctx, field.Selections, res)
+	return ec.marshalOKPI2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐKpi(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_ServiceChain_platformKPIs(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9819,7 +9819,7 @@ func (ec *executionContext) _ServiceChain_kpis(ctx context.Context, field graphq
 	}
 	res := resTmp.([]*model.Kpi)
 	fc.Result = res
-	return ec.marshalOKPI2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐKpi(ctx, field.Selections, res)
+	return ec.marshalOKPI2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐKpi(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_ServiceChain_kpis(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9868,7 +9868,7 @@ func (ec *executionContext) _ServiceChain_servers(ctx context.Context, field gra
 	}
 	res := resTmp.([]*model.Server)
 	fc.Result = res
-	return ec.marshalOServer2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐServer(ctx, field.Selections, res)
+	return ec.marshalOServer2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐServer(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_ServiceChain_servers(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9917,7 +9917,7 @@ func (ec *executionContext) _ServiceChain_status(ctx context.Context, field grap
 	}
 	res := resTmp.(*model.Status)
 	fc.Result = res
-	return ec.marshalOStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐStatus(ctx, field.Selections, res)
+	return ec.marshalOStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐStatus(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_ServiceChain_status(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -10169,7 +10169,7 @@ func (ec *executionContext) _Settings_map(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.(*model.MapSettings)
 	fc.Result = res
-	return ec.marshalOMapSettings2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐMapSettings(ctx, field.Selections, res)
+	return ec.marshalOMapSettings2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐMapSettings(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Settings_map(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -10342,7 +10342,7 @@ func (ec *executionContext) _Site_ancestors(ctx context.Context, field graphql.C
 	}
 	res := resTmp.([]*model.Site)
 	fc.Result = res
-	return ec.marshalOSite2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSite(ctx, field.Selections, res)
+	return ec.marshalOSite2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSite(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Site_ancestors(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -10397,7 +10397,7 @@ func (ec *executionContext) _Site_sites(ctx context.Context, field graphql.Colle
 	}
 	res := resTmp.([]*model.Site)
 	fc.Result = res
-	return ec.marshalOSite2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSite(ctx, field.Selections, res)
+	return ec.marshalOSite2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSite(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Site_sites(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -10452,7 +10452,7 @@ func (ec *executionContext) _Site_devices(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.(*model.DevicesResult)
 	fc.Result = res
-	return ec.marshalODevicesResult2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDevicesResult(ctx, field.Selections, res)
+	return ec.marshalODevicesResult2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDevicesResult(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Site_devices(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -10713,7 +10713,7 @@ func (ec *executionContext) _User_org(ctx context.Context, field graphql.Collect
 	}
 	res := resTmp.(*model.Site)
 	fc.Result = res
-	return ec.marshalOSite2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSite(ctx, field.Selections, res)
+	return ec.marshalOSite2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSite(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_User_org(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -10768,7 +10768,7 @@ func (ec *executionContext) _User_role(ctx context.Context, field graphql.Collec
 	}
 	res := resTmp.(*model.Role)
 	fc.Result = res
-	return ec.marshalORole2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐRole(ctx, field.Selections, res)
+	return ec.marshalORole2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐRole(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_User_role(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -12570,7 +12570,7 @@ func (ec *executionContext) unmarshalInputBBox(ctx context.Context, obj interfac
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("nw"))
-			it.Nw, err = ec.unmarshalNLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐLatLngInput(ctx, v)
+			it.Nw, err = ec.unmarshalNLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐLatLngInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12578,7 +12578,7 @@ func (ec *executionContext) unmarshalInputBBox(ctx context.Context, obj interfac
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("se"))
-			it.Se, err = ec.unmarshalNLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐLatLngInput(ctx, v)
+			it.Se, err = ec.unmarshalNLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐLatLngInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12758,7 +12758,7 @@ func (ec *executionContext) unmarshalInputCreateUserInput(ctx context.Context, o
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("role"))
-			it.Role, err = ec.unmarshalNRole2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐRole(ctx, v)
+			it.Role, err = ec.unmarshalNRole2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐRole(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12812,7 +12812,7 @@ func (ec *executionContext) unmarshalInputDeviceInput(ctx context.Context, obj i
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("connections"))
-			it.Connections, err = ec.unmarshalOConnectionInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnectionInputᚄ(ctx, v)
+			it.Connections, err = ec.unmarshalOConnectionInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnectionInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12868,7 +12868,7 @@ func (ec *executionContext) unmarshalInputDeviceInput(ctx context.Context, obj i
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("position"))
-			it.Position, err = ec.unmarshalOLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐLatLngInput(ctx, v)
+			it.Position, err = ec.unmarshalOLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐLatLngInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13026,7 +13026,7 @@ func (ec *executionContext) unmarshalInputEditDeviceInput(ctx context.Context, o
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("position"))
-			it.Position, err = ec.unmarshalOLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐLatLngInput(ctx, v)
+			it.Position, err = ec.unmarshalOLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐLatLngInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13074,7 +13074,7 @@ func (ec *executionContext) unmarshalInputEditDeviceInput(ctx context.Context, o
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("connections"))
-			it.Connections, err = ec.unmarshalOEditConnectionInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐEditConnectionInputᚄ(ctx, v)
+			it.Connections, err = ec.unmarshalOEditConnectionInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐEditConnectionInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13215,7 +13215,7 @@ func (ec *executionContext) unmarshalInputProvisionInput(ctx context.Context, ob
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("position"))
-			it.Position, err = ec.unmarshalNLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐLatLngInput(ctx, v)
+			it.Position, err = ec.unmarshalNLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐLatLngInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -15312,7 +15312,7 @@ func (ec *executionContext) ___Type(ctx context.Context, sel ast.SelectionSet, o
 
 // region    ***************************** type.gotpl *****************************
 
-func (ec *executionContext) unmarshalNBlockInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlockInput(ctx context.Context, v interface{}) (*model.BlockInput, error) {
+func (ec *executionContext) unmarshalNBlockInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlockInput(ctx context.Context, v interface{}) (*model.BlockInput, error) {
 	res, err := ec.unmarshalInputBlockInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
@@ -15332,17 +15332,17 @@ func (ec *executionContext) marshalNBoolean2bool(ctx context.Context, sel ast.Se
 	return res
 }
 
-func (ec *executionContext) unmarshalNConnectionInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnectionInput(ctx context.Context, v interface{}) (*model.ConnectionInput, error) {
+func (ec *executionContext) unmarshalNConnectionInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnectionInput(ctx context.Context, v interface{}) (*model.ConnectionInput, error) {
 	res, err := ec.unmarshalInputConnectionInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNCreateUserInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐCreateUserInput(ctx context.Context, v interface{}) (model.CreateUserInput, error) {
+func (ec *executionContext) unmarshalNCreateUserInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐCreateUserInput(ctx context.Context, v interface{}) (model.CreateUserInput, error) {
 	res, err := ec.unmarshalInputCreateUserInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNDevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDevice(ctx context.Context, sel ast.SelectionSet, v *model.Device) graphql.Marshaler {
+func (ec *executionContext) marshalNDevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDevice(ctx context.Context, sel ast.SelectionSet, v *model.Device) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -15352,12 +15352,12 @@ func (ec *executionContext) marshalNDevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgq
 	return ec._Device(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNDeviceInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDeviceInput(ctx context.Context, v interface{}) (model.DeviceInput, error) {
+func (ec *executionContext) unmarshalNDeviceInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDeviceInput(ctx context.Context, v interface{}) (model.DeviceInput, error) {
 	res, err := ec.unmarshalInputDeviceInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNDeviceLink2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDeviceLink(ctx context.Context, sel ast.SelectionSet, v *model.DeviceLink) graphql.Marshaler {
+func (ec *executionContext) marshalNDeviceLink2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDeviceLink(ctx context.Context, sel ast.SelectionSet, v *model.DeviceLink) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -15367,17 +15367,17 @@ func (ec *executionContext) marshalNDeviceLink2ᚖgithubᚗcomᚋstephenpmurray�
 	return ec._DeviceLink(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNEditConnectionInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐEditConnectionInput(ctx context.Context, v interface{}) (*model.EditConnectionInput, error) {
+func (ec *executionContext) unmarshalNEditConnectionInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐEditConnectionInput(ctx context.Context, v interface{}) (*model.EditConnectionInput, error) {
 	res, err := ec.unmarshalInputEditConnectionInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNEditDeviceInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐEditDeviceInput(ctx context.Context, v interface{}) (model.EditDeviceInput, error) {
+func (ec *executionContext) unmarshalNEditDeviceInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐEditDeviceInput(ctx context.Context, v interface{}) (model.EditDeviceInput, error) {
 	res, err := ec.unmarshalInputEditDeviceInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNFieldParam2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐFieldParam(ctx context.Context, sel ast.SelectionSet, v *model.FieldParam) graphql.Marshaler {
+func (ec *executionContext) marshalNFieldParam2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐFieldParam(ctx context.Context, sel ast.SelectionSet, v *model.FieldParam) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -15432,47 +15432,47 @@ func (ec *executionContext) marshalNInt2int(ctx context.Context, sel ast.Selecti
 	return res
 }
 
-func (ec *executionContext) unmarshalNIpmiCommand2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐIpmiCommand(ctx context.Context, v interface{}) (model.IpmiCommand, error) {
+func (ec *executionContext) unmarshalNIpmiCommand2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐIpmiCommand(ctx context.Context, v interface{}) (model.IpmiCommand, error) {
 	var res model.IpmiCommand
 	err := res.UnmarshalGQL(v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNIpmiCommand2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐIpmiCommand(ctx context.Context, sel ast.SelectionSet, v model.IpmiCommand) graphql.Marshaler {
+func (ec *executionContext) marshalNIpmiCommand2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐIpmiCommand(ctx context.Context, sel ast.SelectionSet, v model.IpmiCommand) graphql.Marshaler {
 	return v
 }
 
-func (ec *executionContext) unmarshalNKindCatPair2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐKindCatPair(ctx context.Context, v interface{}) (*model.KindCatPair, error) {
+func (ec *executionContext) unmarshalNKindCatPair2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐKindCatPair(ctx context.Context, v interface{}) (*model.KindCatPair, error) {
 	res, err := ec.unmarshalInputKindCatPair(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNLatLngInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐLatLngInput(ctx context.Context, v interface{}) (model.LatLngInput, error) {
+func (ec *executionContext) unmarshalNLatLngInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐLatLngInput(ctx context.Context, v interface{}) (model.LatLngInput, error) {
 	res, err := ec.unmarshalInputLatLngInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐLatLngInput(ctx context.Context, v interface{}) (*model.LatLngInput, error) {
+func (ec *executionContext) unmarshalNLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐLatLngInput(ctx context.Context, v interface{}) (*model.LatLngInput, error) {
 	res, err := ec.unmarshalInputLatLngInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNProvisionInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐProvisionInput(ctx context.Context, v interface{}) (model.ProvisionInput, error) {
+func (ec *executionContext) unmarshalNProvisionInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐProvisionInput(ctx context.Context, v interface{}) (model.ProvisionInput, error) {
 	res, err := ec.unmarshalInputProvisionInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNRole2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐRole(ctx context.Context, v interface{}) (model.Role, error) {
+func (ec *executionContext) unmarshalNRole2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐRole(ctx context.Context, v interface{}) (model.Role, error) {
 	var res model.Role
 	err := res.UnmarshalGQL(v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNRole2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐRole(ctx context.Context, sel ast.SelectionSet, v model.Role) graphql.Marshaler {
+func (ec *executionContext) marshalNRole2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐRole(ctx context.Context, sel ast.SelectionSet, v model.Role) graphql.Marshaler {
 	return v
 }
 
-func (ec *executionContext) unmarshalNSiteInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSiteInput(ctx context.Context, v interface{}) (model.SiteInput, error) {
+func (ec *executionContext) unmarshalNSiteInput2githubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSiteInput(ctx context.Context, v interface{}) (model.SiteInput, error) {
 	res, err := ec.unmarshalInputSiteInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
@@ -15492,7 +15492,7 @@ func (ec *executionContext) marshalNString2string(ctx context.Context, sel ast.S
 	return res
 }
 
-func (ec *executionContext) unmarshalNTagInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐTagInput(ctx context.Context, v interface{}) (*model.TagInput, error) {
+func (ec *executionContext) unmarshalNTagInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐTagInput(ctx context.Context, v interface{}) (*model.TagInput, error) {
 	res, err := ec.unmarshalInputTagInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
@@ -15750,14 +15750,14 @@ func (ec *executionContext) marshalN__TypeKind2string(ctx context.Context, sel a
 	return res
 }
 
-func (ec *executionContext) marshalOApiTokens2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐAPITokens(ctx context.Context, sel ast.SelectionSet, v *model.APITokens) graphql.Marshaler {
+func (ec *executionContext) marshalOApiTokens2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐAPITokens(ctx context.Context, sel ast.SelectionSet, v *model.APITokens) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._ApiTokens(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOBBox2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBBox(ctx context.Context, v interface{}) (*model.BBox, error) {
+func (ec *executionContext) unmarshalOBBox2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBBox(ctx context.Context, v interface{}) (*model.BBox, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -15765,7 +15765,7 @@ func (ec *executionContext) unmarshalOBBox2ᚖgithubᚗcomᚋstephenpmurrayᚋgq
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalOBlock2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlock(ctx context.Context, sel ast.SelectionSet, v []*model.Block) graphql.Marshaler {
+func (ec *executionContext) marshalOBlock2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlock(ctx context.Context, sel ast.SelectionSet, v []*model.Block) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -15792,7 +15792,7 @@ func (ec *executionContext) marshalOBlock2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋ
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOBlock2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlock(ctx, sel, v[i])
+			ret[i] = ec.marshalOBlock2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlock(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -15806,14 +15806,14 @@ func (ec *executionContext) marshalOBlock2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋ
 	return ret
 }
 
-func (ec *executionContext) marshalOBlock2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlock(ctx context.Context, sel ast.SelectionSet, v *model.Block) graphql.Marshaler {
+func (ec *executionContext) marshalOBlock2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlock(ctx context.Context, sel ast.SelectionSet, v *model.Block) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Block(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOBlockChart2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlockChart(ctx context.Context, sel ast.SelectionSet, v []*model.BlockChart) graphql.Marshaler {
+func (ec *executionContext) marshalOBlockChart2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlockChart(ctx context.Context, sel ast.SelectionSet, v []*model.BlockChart) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -15840,7 +15840,7 @@ func (ec *executionContext) marshalOBlockChart2ᚕᚖgithubᚗcomᚋstephenpmurr
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOBlockChart2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlockChart(ctx, sel, v[i])
+			ret[i] = ec.marshalOBlockChart2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlockChart(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -15854,14 +15854,14 @@ func (ec *executionContext) marshalOBlockChart2ᚕᚖgithubᚗcomᚋstephenpmurr
 	return ret
 }
 
-func (ec *executionContext) marshalOBlockChart2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlockChart(ctx context.Context, sel ast.SelectionSet, v *model.BlockChart) graphql.Marshaler {
+func (ec *executionContext) marshalOBlockChart2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlockChart(ctx context.Context, sel ast.SelectionSet, v *model.BlockChart) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._BlockChart(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOBlockInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlockInputᚄ(ctx context.Context, v interface{}) ([]*model.BlockInput, error) {
+func (ec *executionContext) unmarshalOBlockInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlockInputᚄ(ctx context.Context, v interface{}) ([]*model.BlockInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -15873,7 +15873,7 @@ func (ec *executionContext) unmarshalOBlockInput2ᚕᚖgithubᚗcomᚋstephenpmu
 	res := make([]*model.BlockInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNBlockInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐBlockInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNBlockInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐBlockInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -15907,7 +15907,7 @@ func (ec *executionContext) marshalOBoolean2ᚖbool(ctx context.Context, sel ast
 	return res
 }
 
-func (ec *executionContext) marshalOChartKey2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐChartKey(ctx context.Context, sel ast.SelectionSet, v []*model.ChartKey) graphql.Marshaler {
+func (ec *executionContext) marshalOChartKey2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐChartKey(ctx context.Context, sel ast.SelectionSet, v []*model.ChartKey) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -15934,7 +15934,7 @@ func (ec *executionContext) marshalOChartKey2ᚕᚖgithubᚗcomᚋstephenpmurray
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOChartKey2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐChartKey(ctx, sel, v[i])
+			ret[i] = ec.marshalOChartKey2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐChartKey(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -15948,14 +15948,14 @@ func (ec *executionContext) marshalOChartKey2ᚕᚖgithubᚗcomᚋstephenpmurray
 	return ret
 }
 
-func (ec *executionContext) marshalOChartKey2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐChartKey(ctx context.Context, sel ast.SelectionSet, v *model.ChartKey) graphql.Marshaler {
+func (ec *executionContext) marshalOChartKey2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐChartKey(ctx context.Context, sel ast.SelectionSet, v *model.ChartKey) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._ChartKey(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnection(ctx context.Context, sel ast.SelectionSet, v []*model.Connection) graphql.Marshaler {
+func (ec *executionContext) marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnection(ctx context.Context, sel ast.SelectionSet, v []*model.Connection) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -15982,7 +15982,7 @@ func (ec *executionContext) marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurr
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOConnection2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnection(ctx, sel, v[i])
+			ret[i] = ec.marshalOConnection2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnection(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -15996,21 +15996,21 @@ func (ec *executionContext) marshalOConnection2ᚕᚖgithubᚗcomᚋstephenpmurr
 	return ret
 }
 
-func (ec *executionContext) marshalOConnection2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnection(ctx context.Context, sel ast.SelectionSet, v *model.Connection) graphql.Marshaler {
+func (ec *executionContext) marshalOConnection2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnection(ctx context.Context, sel ast.SelectionSet, v *model.Connection) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Connection(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOConnectionEntity2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnectionEntity(ctx context.Context, sel ast.SelectionSet, v *model.ConnectionEntity) graphql.Marshaler {
+func (ec *executionContext) marshalOConnectionEntity2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnectionEntity(ctx context.Context, sel ast.SelectionSet, v *model.ConnectionEntity) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._ConnectionEntity(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOConnectionInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnectionInputᚄ(ctx context.Context, v interface{}) ([]*model.ConnectionInput, error) {
+func (ec *executionContext) unmarshalOConnectionInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnectionInputᚄ(ctx context.Context, v interface{}) ([]*model.ConnectionInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -16022,7 +16022,7 @@ func (ec *executionContext) unmarshalOConnectionInput2ᚕᚖgithubᚗcomᚋsteph
 	res := make([]*model.ConnectionInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNConnectionInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐConnectionInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNConnectionInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐConnectionInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -16030,14 +16030,14 @@ func (ec *executionContext) unmarshalOConnectionInput2ᚕᚖgithubᚗcomᚋsteph
 	return res, nil
 }
 
-func (ec *executionContext) marshalODependencies2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDependencies(ctx context.Context, sel ast.SelectionSet, v *model.Dependencies) graphql.Marshaler {
+func (ec *executionContext) marshalODependencies2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDependencies(ctx context.Context, sel ast.SelectionSet, v *model.Dependencies) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Dependencies(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalODevice2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDeviceᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Device) graphql.Marshaler {
+func (ec *executionContext) marshalODevice2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDeviceᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Device) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -16064,7 +16064,7 @@ func (ec *executionContext) marshalODevice2ᚕᚖgithubᚗcomᚋstephenpmurray�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNDevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDevice(ctx, sel, v[i])
+			ret[i] = ec.marshalNDevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDevice(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -16084,14 +16084,14 @@ func (ec *executionContext) marshalODevice2ᚕᚖgithubᚗcomᚋstephenpmurray�
 	return ret
 }
 
-func (ec *executionContext) marshalODevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDevice(ctx context.Context, sel ast.SelectionSet, v *model.Device) graphql.Marshaler {
+func (ec *executionContext) marshalODevice2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDevice(ctx context.Context, sel ast.SelectionSet, v *model.Device) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Device(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalODeviceLink2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDeviceLinkᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.DeviceLink) graphql.Marshaler {
+func (ec *executionContext) marshalODeviceLink2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDeviceLinkᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.DeviceLink) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -16118,7 +16118,7 @@ func (ec *executionContext) marshalODeviceLink2ᚕᚖgithubᚗcomᚋstephenpmurr
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNDeviceLink2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDeviceLink(ctx, sel, v[i])
+			ret[i] = ec.marshalNDeviceLink2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDeviceLink(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -16138,7 +16138,7 @@ func (ec *executionContext) marshalODeviceLink2ᚕᚖgithubᚗcomᚋstephenpmurr
 	return ret
 }
 
-func (ec *executionContext) unmarshalODeviceStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDeviceStatus(ctx context.Context, v interface{}) (*model.DeviceStatus, error) {
+func (ec *executionContext) unmarshalODeviceStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDeviceStatus(ctx context.Context, v interface{}) (*model.DeviceStatus, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -16147,21 +16147,21 @@ func (ec *executionContext) unmarshalODeviceStatus2ᚖgithubᚗcomᚋstephenpmur
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalODeviceStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDeviceStatus(ctx context.Context, sel ast.SelectionSet, v *model.DeviceStatus) graphql.Marshaler {
+func (ec *executionContext) marshalODeviceStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDeviceStatus(ctx context.Context, sel ast.SelectionSet, v *model.DeviceStatus) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return v
 }
 
-func (ec *executionContext) marshalODevicesResult2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐDevicesResult(ctx context.Context, sel ast.SelectionSet, v *model.DevicesResult) graphql.Marshaler {
+func (ec *executionContext) marshalODevicesResult2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐDevicesResult(ctx context.Context, sel ast.SelectionSet, v *model.DevicesResult) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._DevicesResult(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOEditConnectionInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐEditConnectionInputᚄ(ctx context.Context, v interface{}) ([]*model.EditConnectionInput, error) {
+func (ec *executionContext) unmarshalOEditConnectionInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐEditConnectionInputᚄ(ctx context.Context, v interface{}) ([]*model.EditConnectionInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -16173,7 +16173,7 @@ func (ec *executionContext) unmarshalOEditConnectionInput2ᚕᚖgithubᚗcomᚋs
 	res := make([]*model.EditConnectionInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNEditConnectionInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐEditConnectionInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNEditConnectionInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐEditConnectionInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -16181,7 +16181,7 @@ func (ec *executionContext) unmarshalOEditConnectionInput2ᚕᚖgithubᚗcomᚋs
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOEntityType2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐEntityType(ctx context.Context, v interface{}) (*model.EntityType, error) {
+func (ec *executionContext) unmarshalOEntityType2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐEntityType(ctx context.Context, v interface{}) (*model.EntityType, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -16190,14 +16190,14 @@ func (ec *executionContext) unmarshalOEntityType2ᚖgithubᚗcomᚋstephenpmurra
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalOEntityType2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐEntityType(ctx context.Context, sel ast.SelectionSet, v *model.EntityType) graphql.Marshaler {
+func (ec *executionContext) marshalOEntityType2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐEntityType(ctx context.Context, sel ast.SelectionSet, v *model.EntityType) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return v
 }
 
-func (ec *executionContext) marshalOFieldParam2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐFieldParamᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.FieldParam) graphql.Marshaler {
+func (ec *executionContext) marshalOFieldParam2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐFieldParamᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.FieldParam) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -16224,7 +16224,7 @@ func (ec *executionContext) marshalOFieldParam2ᚕᚖgithubᚗcomᚋstephenpmurr
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNFieldParam2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐFieldParam(ctx, sel, v[i])
+			ret[i] = ec.marshalNFieldParam2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐFieldParam(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -16330,7 +16330,7 @@ func (ec *executionContext) marshalOInt2ᚖint(ctx context.Context, sel ast.Sele
 	return res
 }
 
-func (ec *executionContext) marshalOKPI2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐKpi(ctx context.Context, sel ast.SelectionSet, v []*model.Kpi) graphql.Marshaler {
+func (ec *executionContext) marshalOKPI2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐKpi(ctx context.Context, sel ast.SelectionSet, v []*model.Kpi) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -16357,7 +16357,7 @@ func (ec *executionContext) marshalOKPI2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgq
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOKPI2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐKpi(ctx, sel, v[i])
+			ret[i] = ec.marshalOKPI2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐKpi(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -16371,14 +16371,14 @@ func (ec *executionContext) marshalOKPI2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgq
 	return ret
 }
 
-func (ec *executionContext) marshalOKPI2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐKpi(ctx context.Context, sel ast.SelectionSet, v *model.Kpi) graphql.Marshaler {
+func (ec *executionContext) marshalOKPI2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐKpi(ctx context.Context, sel ast.SelectionSet, v *model.Kpi) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._KPI(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOKindCatPair2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐKindCatPairᚄ(ctx context.Context, v interface{}) ([]*model.KindCatPair, error) {
+func (ec *executionContext) unmarshalOKindCatPair2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐKindCatPairᚄ(ctx context.Context, v interface{}) ([]*model.KindCatPair, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -16390,7 +16390,7 @@ func (ec *executionContext) unmarshalOKindCatPair2ᚕᚖgithubᚗcomᚋstephenpm
 	res := make([]*model.KindCatPair, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNKindCatPair2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐKindCatPair(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNKindCatPair2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐKindCatPair(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -16398,14 +16398,14 @@ func (ec *executionContext) unmarshalOKindCatPair2ᚕᚖgithubᚗcomᚋstephenpm
 	return res, nil
 }
 
-func (ec *executionContext) marshalOLatLng2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐLatLng(ctx context.Context, sel ast.SelectionSet, v *model.LatLng) graphql.Marshaler {
+func (ec *executionContext) marshalOLatLng2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐLatLng(ctx context.Context, sel ast.SelectionSet, v *model.LatLng) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._LatLng(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐLatLngInput(ctx context.Context, v interface{}) (*model.LatLngInput, error) {
+func (ec *executionContext) unmarshalOLatLngInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐLatLngInput(ctx context.Context, v interface{}) (*model.LatLngInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -16413,14 +16413,14 @@ func (ec *executionContext) unmarshalOLatLngInput2ᚖgithubᚗcomᚋstephenpmurr
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalOMapSettings2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐMapSettings(ctx context.Context, sel ast.SelectionSet, v *model.MapSettings) graphql.Marshaler {
+func (ec *executionContext) marshalOMapSettings2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐMapSettings(ctx context.Context, sel ast.SelectionSet, v *model.MapSettings) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._MapSettings(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOMetric2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐMetric(ctx context.Context, sel ast.SelectionSet, v []*model.Metric) graphql.Marshaler {
+func (ec *executionContext) marshalOMetric2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐMetric(ctx context.Context, sel ast.SelectionSet, v []*model.Metric) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -16447,7 +16447,7 @@ func (ec *executionContext) marshalOMetric2ᚕᚖgithubᚗcomᚋstephenpmurray�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOMetric2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐMetric(ctx, sel, v[i])
+			ret[i] = ec.marshalOMetric2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐMetric(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -16461,14 +16461,14 @@ func (ec *executionContext) marshalOMetric2ᚕᚖgithubᚗcomᚋstephenpmurray�
 	return ret
 }
 
-func (ec *executionContext) marshalOMetric2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐMetric(ctx context.Context, sel ast.SelectionSet, v *model.Metric) graphql.Marshaler {
+func (ec *executionContext) marshalOMetric2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐMetric(ctx context.Context, sel ast.SelectionSet, v *model.Metric) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Metric(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOOktoResource2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐOktoResource(ctx context.Context, sel ast.SelectionSet, v []*model.OktoResource) graphql.Marshaler {
+func (ec *executionContext) marshalOOktoResource2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐOktoResource(ctx context.Context, sel ast.SelectionSet, v []*model.OktoResource) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -16495,7 +16495,7 @@ func (ec *executionContext) marshalOOktoResource2ᚕᚖgithubᚗcomᚋstephenpmu
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOOktoResource2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐOktoResource(ctx, sel, v[i])
+			ret[i] = ec.marshalOOktoResource2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐOktoResource(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -16509,28 +16509,28 @@ func (ec *executionContext) marshalOOktoResource2ᚕᚖgithubᚗcomᚋstephenpmu
 	return ret
 }
 
-func (ec *executionContext) marshalOOktoResource2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐOktoResource(ctx context.Context, sel ast.SelectionSet, v *model.OktoResource) graphql.Marshaler {
+func (ec *executionContext) marshalOOktoResource2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐOktoResource(ctx context.Context, sel ast.SelectionSet, v *model.OktoResource) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._OktoResource(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOProgress2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐProgress(ctx context.Context, sel ast.SelectionSet, v *model.Progress) graphql.Marshaler {
+func (ec *executionContext) marshalOProgress2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐProgress(ctx context.Context, sel ast.SelectionSet, v *model.Progress) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Progress(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOProvisionChart2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐProvisionChart(ctx context.Context, sel ast.SelectionSet, v *model.ProvisionChart) graphql.Marshaler {
+func (ec *executionContext) marshalOProvisionChart2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐProvisionChart(ctx context.Context, sel ast.SelectionSet, v *model.ProvisionChart) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._ProvisionChart(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalORole2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐRole(ctx context.Context, v interface{}) (*model.Role, error) {
+func (ec *executionContext) unmarshalORole2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐRole(ctx context.Context, v interface{}) (*model.Role, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -16539,14 +16539,14 @@ func (ec *executionContext) unmarshalORole2ᚖgithubᚗcomᚋstephenpmurrayᚋgq
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalORole2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐRole(ctx context.Context, sel ast.SelectionSet, v *model.Role) graphql.Marshaler {
+func (ec *executionContext) marshalORole2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐRole(ctx context.Context, sel ast.SelectionSet, v *model.Role) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return v
 }
 
-func (ec *executionContext) marshalOServer2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐServer(ctx context.Context, sel ast.SelectionSet, v []*model.Server) graphql.Marshaler {
+func (ec *executionContext) marshalOServer2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐServer(ctx context.Context, sel ast.SelectionSet, v []*model.Server) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -16573,7 +16573,7 @@ func (ec *executionContext) marshalOServer2ᚕᚖgithubᚗcomᚋstephenpmurray�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOServer2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐServer(ctx, sel, v[i])
+			ret[i] = ec.marshalOServer2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐServer(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -16587,14 +16587,14 @@ func (ec *executionContext) marshalOServer2ᚕᚖgithubᚗcomᚋstephenpmurray�
 	return ret
 }
 
-func (ec *executionContext) marshalOServer2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐServer(ctx context.Context, sel ast.SelectionSet, v *model.Server) graphql.Marshaler {
+func (ec *executionContext) marshalOServer2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐServer(ctx context.Context, sel ast.SelectionSet, v *model.Server) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Server(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOService2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐService(ctx context.Context, sel ast.SelectionSet, v []*model.Service) graphql.Marshaler {
+func (ec *executionContext) marshalOService2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐService(ctx context.Context, sel ast.SelectionSet, v []*model.Service) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -16621,7 +16621,7 @@ func (ec *executionContext) marshalOService2ᚕᚖgithubᚗcomᚋstephenpmurray�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOService2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐService(ctx, sel, v[i])
+			ret[i] = ec.marshalOService2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐService(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -16635,14 +16635,14 @@ func (ec *executionContext) marshalOService2ᚕᚖgithubᚗcomᚋstephenpmurray�
 	return ret
 }
 
-func (ec *executionContext) marshalOService2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐService(ctx context.Context, sel ast.SelectionSet, v *model.Service) graphql.Marshaler {
+func (ec *executionContext) marshalOService2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐService(ctx context.Context, sel ast.SelectionSet, v *model.Service) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Service(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOServiceChain2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐServiceChain(ctx context.Context, sel ast.SelectionSet, v []*model.ServiceChain) graphql.Marshaler {
+func (ec *executionContext) marshalOServiceChain2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐServiceChain(ctx context.Context, sel ast.SelectionSet, v []*model.ServiceChain) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -16669,7 +16669,7 @@ func (ec *executionContext) marshalOServiceChain2ᚕᚖgithubᚗcomᚋstephenpmu
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOServiceChain2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐServiceChain(ctx, sel, v[i])
+			ret[i] = ec.marshalOServiceChain2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐServiceChain(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -16683,21 +16683,21 @@ func (ec *executionContext) marshalOServiceChain2ᚕᚖgithubᚗcomᚋstephenpmu
 	return ret
 }
 
-func (ec *executionContext) marshalOServiceChain2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐServiceChain(ctx context.Context, sel ast.SelectionSet, v *model.ServiceChain) graphql.Marshaler {
+func (ec *executionContext) marshalOServiceChain2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐServiceChain(ctx context.Context, sel ast.SelectionSet, v *model.ServiceChain) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._ServiceChain(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOSettings2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSettings(ctx context.Context, sel ast.SelectionSet, v *model.Settings) graphql.Marshaler {
+func (ec *executionContext) marshalOSettings2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSettings(ctx context.Context, sel ast.SelectionSet, v *model.Settings) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Settings(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOSite2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSite(ctx context.Context, sel ast.SelectionSet, v []*model.Site) graphql.Marshaler {
+func (ec *executionContext) marshalOSite2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSite(ctx context.Context, sel ast.SelectionSet, v []*model.Site) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -16724,7 +16724,7 @@ func (ec *executionContext) marshalOSite2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋg
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOSite2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSite(ctx, sel, v[i])
+			ret[i] = ec.marshalOSite2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSite(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -16738,14 +16738,14 @@ func (ec *executionContext) marshalOSite2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋg
 	return ret
 }
 
-func (ec *executionContext) marshalOSite2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐSite(ctx context.Context, sel ast.SelectionSet, v *model.Site) graphql.Marshaler {
+func (ec *executionContext) marshalOSite2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐSite(ctx context.Context, sel ast.SelectionSet, v *model.Site) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Site(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐStatus(ctx context.Context, v interface{}) (*model.Status, error) {
+func (ec *executionContext) unmarshalOStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐStatus(ctx context.Context, v interface{}) (*model.Status, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -16754,7 +16754,7 @@ func (ec *executionContext) unmarshalOStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋ
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalOStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐStatus(ctx context.Context, sel ast.SelectionSet, v *model.Status) graphql.Marshaler {
+func (ec *executionContext) marshalOStatus2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐStatus(ctx context.Context, sel ast.SelectionSet, v *model.Status) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -16815,7 +16815,7 @@ func (ec *executionContext) marshalOString2ᚖstring(ctx context.Context, sel as
 	return res
 }
 
-func (ec *executionContext) unmarshalOTagInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐTagInputᚄ(ctx context.Context, v interface{}) ([]*model.TagInput, error) {
+func (ec *executionContext) unmarshalOTagInput2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐTagInputᚄ(ctx context.Context, v interface{}) ([]*model.TagInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -16827,7 +16827,7 @@ func (ec *executionContext) unmarshalOTagInput2ᚕᚖgithubᚗcomᚋstephenpmurr
 	res := make([]*model.TagInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNTagInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐTagInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNTagInput2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐTagInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -16851,7 +16851,7 @@ func (ec *executionContext) marshalOTime2ᚖtimeᚐTime(ctx context.Context, sel
 	return res
 }
 
-func (ec *executionContext) marshalOUser2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v []*model.User) graphql.Marshaler {
+func (ec *executionContext) marshalOUser2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v []*model.User) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -16878,7 +16878,7 @@ func (ec *executionContext) marshalOUser2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋg
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOUser2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐUser(ctx, sel, v[i])
+			ret[i] = ec.marshalOUser2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐUser(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -16892,7 +16892,7 @@ func (ec *executionContext) marshalOUser2ᚕᚖgithubᚗcomᚋstephenpmurrayᚋg
 	return ret
 }
 
-func (ec *executionContext) marshalOUser2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v *model.User) graphql.Marshaler {
+func (ec *executionContext) marshalOUser2ᚖgithubᚗcomᚋstephenpmurrayᚋgqlgenᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v *model.User) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
